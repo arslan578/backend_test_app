@@ -1,0 +1,196 @@
+{
+	"info": {
+		"_postman_id": "99cb176f-1380-4ff1-97b0-1391003d387b",
+		"name": "backend-api's",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "arslanrana661@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "tester1234",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "arslan1",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{host}}/api/v1/register/",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"register",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "arslanrana661@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "tester1234",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{host}}/api/v1/login/",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"login",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create_item",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token {{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "items",
+							"value": "{\"data\":[{\"field_a\": \"aaa\", \"field_b\": \"bbbb\"}]}",
+							"description": "{\"data\":[{\"field_a\": \"aaa\", \"field_b\": \"bbbb\"},{\"field_a\": \"aaa\", \"field_b\": \"bbbb\"},{\"field_a\": \"aaa\", \"field_b\": \"bbbb\"},{\"field_a\": \"aaa\", \"field_b\": \"bbbb\"},{\"field_a\": \"aaa\", \"field_b\": \"bbbb\"},{\"field_a\": \"aaa\", \"field_b\": \"bbbb\"},{\"field_a\": \"aaa\", \"field_b\": \"bbbb\"},{\"field_a\": \"aaa\", \"field_b\": \"bbbb\"},{\"field_a\": \"aaa\", \"field_b\": \"bbbb\"},{\"field_a\": \"aaa\", \"field_b\": \"bbbb\"},{\"field_a\": \"aaa\", \"field_b\": \"bbbb\"}]}",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{host}}/api/v1/item/",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"item",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update_item",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token {{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "field_a",
+							"value": "test",
+							"type": "text"
+						},
+						{
+							"key": "field_b",
+							"value": "test",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{host}}/api/v1/item/1/",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"item",
+						"1",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get_all_user_item",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token {{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "{{host}}/api/v1/item/",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"item",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
