@@ -96,7 +96,7 @@
 					"formdata": [
 						{
 							"key": "items",
-							"value": "{\"data\":[{\"field_a\": \"aaa\", \"field_b\": \"bbbb\"}]}",
+							"value": "{\"data\":[{\"field_a\": \"aaa\", \"field_b\": \"bbbb\"},{\"field_a\": \"aaa\", \"field_b\": \"bbbb\"},{\"field_a\": \"aaa\", \"field_b\": \"bbbb\"},{\"field_a\": \"aaa\", \"field_b\": \"bbbb\"},{\"field_a\": \"aaa\", \"field_b\": \"bbbb\"},{\"field_a\": \"aaa\", \"field_b\": \"bbbb\"},{\"field_a\": \"aaa\", \"field_b\": \"bbbb\"},{\"field_a\": \"aaa\", \"field_b\": \"bbbb\"},{\"field_a\": \"aaa\", \"field_b\": \"bbbb\"},{\"field_a\": \"aaa\", \"field_b\": \"bbbb\"},{\"field_a\": \"aaa\", \"field_b\": \"bbbb\"},{\"field_a\": \"aaa\", \"field_b\": \"bbbb\"},{\"field_a\": \"aaa\", \"field_b\": \"bbbb\"},{\"field_a\": \"aaa\", \"field_b\": \"bbbb\"},{\"field_a\": \"aaa\", \"field_b\": \"bbbb\"},{\"field_a\": \"aaa\", \"field_b\": \"bbbb\"},{\"field_a\": \"aaa\", \"field_b\": \"bbbb\"}]}",
 							"description": "{\"data\":[{\"field_a\": \"aaa\", \"field_b\": \"bbbb\"},{\"field_a\": \"aaa\", \"field_b\": \"bbbb\"},{\"field_a\": \"aaa\", \"field_b\": \"bbbb\"},{\"field_a\": \"aaa\", \"field_b\": \"bbbb\"},{\"field_a\": \"aaa\", \"field_b\": \"bbbb\"},{\"field_a\": \"aaa\", \"field_b\": \"bbbb\"},{\"field_a\": \"aaa\", \"field_b\": \"bbbb\"},{\"field_a\": \"aaa\", \"field_b\": \"bbbb\"},{\"field_a\": \"aaa\", \"field_b\": \"bbbb\"},{\"field_a\": \"aaa\", \"field_b\": \"bbbb\"},{\"field_a\": \"aaa\", \"field_b\": \"bbbb\"}]}",
 							"type": "text"
 						}
@@ -186,6 +186,39 @@
 						"api",
 						"v1",
 						"item",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "admin_get_item_user",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token {{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "{{host}}/api/v1/get_item_users/",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"get_item_users",
 						""
 					]
 				}
