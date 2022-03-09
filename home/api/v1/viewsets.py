@@ -10,8 +10,10 @@ from home.api.v1.serializers import (
 )
 from django.utils.translation import ugettext_lazy as _
 
-from home.models import Item
+from home.models import Item, ItemCount
 import json
+
+from users.permissions import AdminPermission
 
 User = get_user_model()
 
@@ -104,19 +106,40 @@ class ItemModelViewSet(ModelViewSet):
             serializer.is_valid(raise_exception=True)
             items = serializer.validated_data['items']['data']
             user = request.user
-            if len(items) > 10:
+            item_count = ItemCount.objects.get_or_create(user=user)[0]
+            total_count = item_count.item_count
+            if total_count >= 10:
                 return Response({'error': 'item limits exceed 10'}, status=status.HTTP_400_BAD_REQUEST)
 
             is_item_add = False
             for item in items:
-                Item.objects.create(**item, user=user)
+                if total_count > 10:
+                    total_count -= 1
+                    break
+                Item.objects.create(**item, item_count=item_count)
                 is_item_add = True
+                total_count += 1
+
 
             if is_item_add:
                 user.entered = True
                 user.save()
+            item_count.item_count = total_count
+            item_count.save()
+
 
             return Response(status=status.HTTP_201_CREATED)
 
         except Exception as e:
             return Response({'error': e.args[0]}, status=status.HTTP_400_BAD_REQUEST)
+
+
+class GetItemUser(ModelViewSet):
+    authentication_classes = (TokenAuthentication, )
+    permission_classes = (AdminPermission, )
+    serializer_class = SignupSerializer
+    queryset = User.objects.all()
+
+    def get_queryset(self):
+        return User.objects.filter(entered=True)
+
