@@ -94,10 +94,10 @@ class ItemModelViewSet(ModelViewSet):
     queryset = Item.objects.all()
 
     def get_queryset(self):
-        return Item.objects.filter(user=self.request.user)
+        return Item.objects.filter(item_count__user=self.request.user)
 
     def get_object(self):
-        return Item.objects.get(id=self.kwargs['pk'], user=self.request.user)
+        return Item.objects.get(id=self.kwargs['pk'], item_count__user=self.request.user)
 
     def create(self, request, *args, **kwargs):
         try:

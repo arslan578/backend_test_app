@@ -51,4 +51,4 @@ class ItemSerializer(serializers.Serializer):
 class ItemModelSerializer(serializers.ModelSerializer):
     class Meta:
         model = Item
-        exclude = ('updated_at', 'user')
+        exclude = ('updated_at', 'item_count')
